@@ -3,10 +3,11 @@ var txt ='Thank you! We will get back to you as soon as possible!';
 var speed = 50;
 let map;
 
-
-const title = document.getElementById("title");
-title.addEventListener("mouseover", changeCream);
-title.addEventListener("mouseout", changeBlue);
+if (document.getElementById("title")){
+    const title = document.getElementById("title");
+    title.addEventListener("mouseover", changeCream);
+    title.addEventListener("mouseout", changeBlue);
+}
 
 function changeCream(){
   title.style.color = "rgb(252,236,228)";

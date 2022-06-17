@@ -1,0 +1,54 @@
+{% extends 'basePage.html' %}
+{% block title %}
+{% set title='Assignment3_2' %}
+{{ title }}Page
+{% endblock %}
+
+{% block content %}
+    <form action="/assignment3_2" method="get">
+        <br><br><br>
+       <span>search </span><input type="text" name="name" placeholder="Name">
+        <input type="submit" value="Find">
+        <br><br><br>
+    </form>
+
+    {% if name %}
+    <h2>{{ name }}</h2>
+    <h3>Email: {{ email }}</h3>
+    <h3>Gender: {{ gender }}</h3>
+    {% endif %}
+
+    {% if message %}
+        <h3 style="color: red">{{ message }}</h3>
+    {% endif %}
+
+    {% if users %}
+        {% for user in users %}
+            <li>{{ user.name}},</li>
+            <li> {{ user.email}},</li>
+            <li> {{ user.gender}}</li> <br>
+        {% endfor %}
+    {% endif %}
+
+    {% if not session['name'] %}
+        <form action="/assignment3_2" method="post">
+                    <span>Registration </span>
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input list = "gender" type="text" name="gender" placeholder="Gender" required>
+                    <datalist id="gender" required>
+                        <option value="Male">
+                        <option value="Female">
+                    </datalist>
+                    <input type="submit" value="Send">
+
+        </form>
+    {% endif %}
+
+    {% if session['name'] %}
+        <h3 >Welcome, {{ session['name'] | upper() }}</h3>
+    {% endif %}
+
+
+
+{% endblock %}

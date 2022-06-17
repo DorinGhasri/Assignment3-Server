@@ -10,6 +10,7 @@
     'myHeader'
     'center'
     'toContactDiv '
+    'location'
     'footer'; 
 }
 
@@ -18,7 +19,7 @@ body {
     padding: 0;
     width: 100%;
     height: 100vh;
-    background-image: url(..//static/brown\ dog.png);
+    background-image: url(browndog.png);
     background-size:  35% 70%;
     background-repeat:no-repeat;
     background-position: right bottom;
@@ -34,19 +35,19 @@ body {
 
 @font-face {
     font-family: myFirstFont;
-    src: url(..//static/fonts/KrabulerFF/RF\ Krabuler\ Regular.ttf);
+    src: url(fonts/KrabulerFF/KrabulerRegular.ttf);
 }
 
 #myHeader {
     grid-area: myHeader;
-    height: 100%;
+    height: 12%;
     display: flex;
     align-items: center;
     justify-content:space-between;
     border:0.4vh;
     border-color:rgb(83, 138, 168);
     border-style:solid;
-    background-image: url(..//static/background.png);
+    background-image: url(background.png);
 }
 
 #headerLogo { 
@@ -71,7 +72,7 @@ li,a {
 
 
 .navLinks li a{
-    transition: all 0.3 ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 .active {
@@ -140,6 +141,7 @@ li,a {
 
 #location{
     font-size: x-large;
+    grid-area: location;
 }
 
  #footer {
@@ -161,6 +163,10 @@ li,a {
     
 }
 
+#logOut{
+    font-size:x-large;
+}
+
 @media only screen and (max-width: 600px) {
     body {
         background-color: rgb(251, 237, 216);
@@ -172,6 +178,7 @@ li,a {
         'myHeader'
         'center'
         'toContactDiv'
+        'location'
         'footer';
     }
     #headerLogo { 
@@ -200,14 +207,14 @@ li,a {
     #myHeader {
 
         grid-area: myHeader;
-        height: 80%;
+        height: 12%;
         display: flex;
         align-items: center;
         justify-content:space-between;
         border:0.2vh;
         border-color:rgb(83, 138, 168);
         border-style:solid;
-        background-image: url(..//static/background.png);
+        background-image: url(background.png);
     
     
     }
@@ -221,8 +228,15 @@ li,a {
     li,a {
         display: inline;
         font-family: myFirstFont;
-        font-size:xx-large;
+        font-size:large;
         text-decoration: none;
         
     }
+    #logOut{
+        font-size:large;
+    }
+    #greeting{
+         font-size:small;
+    }
+
 }

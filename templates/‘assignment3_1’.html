@@ -1,0 +1,27 @@
+{% extends 'basePage.html' %}
+{% block title %}
+{% set title='Assignment3_1' %}
+{{ title }}Page
+{% endblock %}
+
+{% block content %}
+    {{super()}}
+    <h1> Hello, {{ user_name | default('I dont know you', true) | upper() }}!</h1>
+    {% if hobbies %}
+        <h1>Your Hobbies</h1>
+        {% for hobbie in hobbies %}
+            <li>{{ hobbie | lower() }}</li> <br>
+        {% endfor %}
+    {% endif %}
+    {% if favorite_food %}
+        <h1>Your Favorite Food</h1>
+        {% for food in favorite_food %}
+            <li>{{ food | upper() }}</li><br>
+        {% endfor %}
+    {% endif %}
+<br><br>
+{% endblock %}
+
+
+
+

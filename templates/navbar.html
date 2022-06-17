@@ -1,0 +1,16 @@
+
+<header id="myHeader">
+        <nav>
+             <ul class = "navLinks">
+                 <li><a href="{{url_for('get_home_page')}}">Home Page</a></li>
+                 <li><a href="{{url_for('get_contact_page')}}">Contact Us</a></li>
+                 <li><a href="{{url_for('get_hobbies_page')}}">Assignment3_1</a></li>
+                 <li><a href="{{url_for('get_assignment3_2_page')}}">Assignment3_2</a></li>
+            </ul>
+        </nav>
+        {% if session['name'] %}
+        <h3 id = "greeting">Welcome, {{ session['name'] | upper() }}</h3>
+        <a id="logOut" href="/log_out">Log Out</a>
+        {% endif %}
+        <img src={{url_for('static', filename = 'logo.png')}} id="headerLogo">
+</header>
