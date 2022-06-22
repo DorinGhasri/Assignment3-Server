@@ -1,0 +1,81 @@
+{% extends 'basePage.html' %}
+{% block title %}
+{% set title='Assignment_4' %}
+{{ title }}Page
+{% endblock %}
+
+{% block content %}
+{{super()}}
+    {% if message %}
+        <div class="alert">
+          <span style="font-size: larger; color: red " class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span>
+            {{message}}
+        </div>
+    {% endif %}
+    <h1>Users Page</h1>
+    <div class="container">
+
+        <h2>Insert Form</h2>
+        <form action="/insert_user" method="post" id = "InsertForm">
+            <input type="text" name="name" placeholder="Insert Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="gender" placeholder="Insert gender">
+            <input type="submit" value="Send">
+        </form>
+        <br>
+
+        <h2>Update Form</h2>
+        <form action="/update_user" method="post" id = "UpdateForm">
+            <input type="text" name="name" placeholder="Insert Name">
+            <h4>What would you like to update?</h4>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="gender" placeholder="Insert gender" required>
+            <input type="submit" value="Send">
+        </form>
+        <br>
+        <h2>Delete Form</h2>
+            <form action="/delete_user" method="post"  id = "DeleteForm">
+                <h4>Who would you like to delete?</h4>
+                <input type="text" name="user_name" placeholder="Insert Name">
+                <input type="submit" value="Delete">
+            </form>
+        <br>
+
+    </div>
+
+    <h2>Users</h2>
+    {% for user in users %}
+        <div class="container" id = "users">
+            {#{{ user }}#}
+            <h3>{{ user.name }}</h3>
+            <h4>Email: {{ user.email }}</h4>
+            <h4>Gender: {{ user.gender }}</h4>
+            <br>
+
+        </div>
+    {% endfor %}
+    <br>
+
+    <h2>First Form</h2>
+     User id: <input type="text" id="user_id" >
+    <button onclick="get_user_by_id(document.getElementById('user_id').value)">Click me</button></h3>
+    <main>
+
+    </main>
+    <h2>Second Form</h2>
+
+    <form action="/outer_source" method="get">
+        User id: <input type="text" name="user_id" >
+        <input type="submit" value="Get User">
+    </form>
+
+    {% if session.user %}
+        <h4>ID: {{ session.user.id }}</h4>
+        <h4>Email: {{ session.user.email }}</h4>
+        <h4>First name: {{ session.user.first_name }}</h4>
+        <h4>Last name: {{ session.user.last_name }}</h4>
+        <img src="{{ session.user.avatar }}" alt="pic">
+        <hr>
+    {% endif %}
+
+{% endblock %}
